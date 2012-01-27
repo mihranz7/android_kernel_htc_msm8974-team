@@ -25,6 +25,7 @@
 #include <linux/alarmtimer.h>
 #include <linux/sysdev.h>
 #include <linux/uaccess.h>
+#include <linux/alarmtimer.h>
 #include "android_alarm.h"
 
 /* XXX - Hack out wakelocks, while they are out of tree */
@@ -117,7 +118,6 @@ static void devalarm_cancel(struct devalarm *alrm)
 }
 
 static struct alarm alarms[ANDROID_ALARM_TYPE_COUNT];
-static struct android_alarm alarms[ANDROID_ALARM_TYPE_COUNT];
 
 static long alarm_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
 {
@@ -299,7 +299,6 @@ static int alarm_release(struct inode *inode, struct file *file)
 }
 
 static void devalarm_triggered(struct devalarm *alarm)
-static void alarm_triggered(struct android_alarm *alarm)
 {
 	unsigned long flags;
 	uint32_t alarm_type_mask = 1U << alarm->type;
