@@ -15,14 +15,16 @@
 
 #include <linux/time.h>
 #include <linux/module.h>
+#include <asm/mach/time.h>
 #include <linux/device.h>
 #include <linux/miscdevice.h>
 #include <linux/fs.h>
 #include <linux/platform_device.h>
 #include <linux/sched.h>
 #include <linux/spinlock.h>
-#include <linux/uaccess.h>
 #include <linux/alarmtimer.h>
+#include <linux/sysdev.h>
+#include <linux/uaccess.h>
 #include <linux/wakelock.h>
 #include "android_alarm.h"
 
@@ -103,6 +105,7 @@ static void devalarm_cancel(struct devalarm *alrm)
 		hrtimer_cancel(&alrm->u.hrt);
 }
 
+static struct alarm alarms[ANDROID_ALARM_TYPE_COUNT];
 
 static long alarm_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
 {
