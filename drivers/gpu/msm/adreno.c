@@ -249,7 +249,7 @@ static const struct {
 		512, 0, 2, SZ_128K, 0x3FF037, 0x3FF016 },
 };
 
-/* Nice level for the higher priority GPU start thread */
+
 static int _wake_nice = -7;
 
 /* Number of milliseconds to stay active active after a wake on touch */
@@ -2230,6 +2230,7 @@ int adreno_reset(struct kgsl_device *device)
 
 	return ret;
 }
+
 
 /**
  * _ft_sysfs_store() -  Common routine to write to FT sysfs files
