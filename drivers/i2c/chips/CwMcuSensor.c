@@ -1357,10 +1357,6 @@ static int active_set(struct device *dev,struct device_attribute *attr,const cha
 		return count;
 	}
 
-	if ((sensors_id == Proximity) && (enabled == 0) && proximity_flag) {
-		enabled = 1;
-	}
-
 	if ((sensors_id == Proximity) && (enabled == 0)) {
 		if (mcu_data->proximity_debu_info == 1) {
 			uint8_t mcu_data_p[4];
